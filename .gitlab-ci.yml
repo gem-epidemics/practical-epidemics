@@ -1,0 +1,18 @@
+image: registry.gitlab.com/gem-epidemics/practical-epidemics/python3.10-poetry:latest
+
+before_script:
+  - poetry install
+
+pages:
+  stage: deploy
+  script:
+    - cd site
+    - poetry run make
+    - mv site/build/html public
+  artifacts:
+    paths:
+      - public
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
