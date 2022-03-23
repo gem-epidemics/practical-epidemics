@@ -10,6 +10,8 @@ Sphinx = "^4.4.0"
 jupyterlab = "^3.2.9"
 matplotlib = "^3.5.1"
 tensorflow = "^2.8.0"
+nbsphinx = "^0.8.8"
+sphinx-book-theme = "^0.2.0"
 
 
 [tool.poetry.dev-dependencies]
