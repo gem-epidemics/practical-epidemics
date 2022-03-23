@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "practical-epidemics"
+version = "0.1.0"
+description = ""
+authors = ["Chris Jewell <c.jewell@lancaster.ac.uk>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+Sphinx = "^4.4.0"
+jupyterlab = "^3.2.9"
+matplotlib = "^3.5.1"
+tensorflow = "^2.8.0"
+
+
+[tool.poetry.dev-dependencies]
+pydot = "^1.4.2"
+
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
