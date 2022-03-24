@@ -7,7 +7,6 @@ authors = ["Chris Jewell <c.jewell@lancaster.ac.uk>"]
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 Sphinx = "^4.4.0"
-jupyterlab = "^3.2.9"
 matplotlib = "^3.5.1"
 tensorflow = "^2.8.0"
 nbsphinx = "^0.8.8"
@@ -16,7 +15,7 @@ sphinx-book-theme = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 pydot = "^1.4.2"
-
+jupyterlab = "^3.2.9"
 
 
 [build-system]
