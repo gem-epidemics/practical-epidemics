@@ -34,6 +34,9 @@ site-build:
 
   image: $DOCKER_IMAGE_TAG
 
+  before_script:
+    - echo Before script path `pwd`
+
   script:
     - echo `pwd`
     - poetry shell
