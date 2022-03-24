@@ -1,6 +1,13 @@
 image: registry.gitlab.com/gem-epidemics/practical-epidemics/python3.10-poetry:latest
 
+cache:
+  paths:
+    - .cache/pypoetry
+    - .venv
+
 before_script:
+  - poetry config virtualenvs.in-project true
+  - poetry config cache-dir .cache
   - poetry install
 
 pages:
@@ -8,6 +15,7 @@ pages:
   script:
     - cd site
     - poetry run make
+    - cd ..
     - mv site/build/html public
   artifacts:
     paths:
