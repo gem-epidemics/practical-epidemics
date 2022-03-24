@@ -20,7 +20,6 @@ build-push-docker-image:
   script:
     - echo Creating Docker image $DOCKER_IMAGE_TAG
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - cd docker-build
     - docker build -t $DOCKER_IMAGE_TAG docker-build/Dockerfile
     - docker push $DOCKER_IMAGE_TAG
 
