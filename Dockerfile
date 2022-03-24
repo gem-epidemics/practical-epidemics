@@ -9,8 +9,6 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 
 ENV PATH /root/.poetry/bin:$PATH
 
-RUN poetry config virtualenvs.in-project true
-
 COPY ./poetry.lock .
 COPY ./pyproject.toml .
 
