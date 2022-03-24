@@ -48,6 +48,11 @@ exclude_patterns = []
 #
 html_theme = "sphinx_book_theme"
 html_title = project
+html_theme_options = {
+    "repository_url": "https://gitlab.com/gem-epidemics/practical-epidemics",
+    "use_repository_button": True,
+}
+html_logo = "images/gem-logo.png"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
