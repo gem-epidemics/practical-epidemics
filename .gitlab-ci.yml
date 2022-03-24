@@ -14,7 +14,7 @@ pages:
   stage: deploy
   script:
     - cd site
-    - poetry run make
+    - poetry run make html
     - cd ..
     - mv site/build/html public
   artifacts:
