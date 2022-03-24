@@ -8,8 +8,3 @@ RUN pip install --upgrade pip --no-cache-dir
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
 ENV PATH /root/.poetry/bin:$PATH
-
-COPY ./poetry.lock .
-COPY ./pyproject.toml .
-
-RUN poetry install

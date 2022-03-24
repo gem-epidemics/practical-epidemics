@@ -1,10 +1,14 @@
 stages:
+  - docker-image-build
   - build
   - deploy
 
 
 variables:
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
+  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  DOCKER_TLS_CERTDIR: "/certs"
+
 
 cache:
   key: "${CI_COMMIT_REF_SLUG}"
@@ -13,13 +17,27 @@ cache:
     - .venv
 
 
+build-and-push-build-image:
+  stage: docker-image-build
+
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo Creating Docker image $DOCKER_IMAGE_TAG
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $DOCKER_IMAGE_TAG docker-build
+    - docker push $DOCKER_IMAGE_TAG
+
+  rules:
+    - changes:
+      - docker-build/Dockerfile
+
+
 site-build:
   stage: build
-  image: python:3.10
+  image: $DOCKER_IMAGE_TAG
   before_script:
-    - apt update
-    - apt install -y pandoc
-    - pip install poetry
     - poetry --version
     - poetry config virtualenvs.in-project true
     - poetry install -vv
