@@ -10,13 +10,6 @@ variables:
   DOCKER_TLS_CERTDIR: "/certs"
 
 
-cache:
-  key: "${CI_COMMIT_REF_SLUG}"
-  paths:
-    - .cache/pip
-    - .venv
-
-
 build-and-push-build-image:
   stage: docker-image-build
 
@@ -37,6 +30,11 @@ build-and-push-build-image:
 site-build:
   stage: build
   image: $DOCKER_IMAGE_TAG
+  cache:
+    key: site-build-${CI_COMMIT_REF_SLUG}
+    paths:
+      - .cache/pip
+      - .venv
   before_script:
     - poetry --version
     - poetry config virtualenvs.in-project true
