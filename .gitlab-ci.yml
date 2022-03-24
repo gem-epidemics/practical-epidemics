@@ -1,25 +1,59 @@
-image: registry.gitlab.com/gem-epidemics/practical-epidemics/python3.10-poetry:latest
+stages:
+  - build-docker
+  - build
+  - deploy
 
-cache:
-  paths:
-    - .cache/pypoetry
-    - .venv
 
-before_script:
-  - poetry config virtualenvs.in-project true
-  - poetry config cache-dir .cache
-  - poetry install
+variables:
+  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  DOCKER_TLS_CERTDIR: "/certs"
 
-pages:
-  stage: deploy
+
+build-push-docker-image:
+  stage: build-docker
+
+  image: docker:latest
+
+  services:
+    - docker:dind
+
+  script:
+    - echo Creating Docker image $DOCKER_IMAGE_TAG
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - cd docker-build
+    - docker build -t $IMAGE_TAG docker-build/Dockerfile
+    - docker push $IMAGE_TAG
+
+  rules:
+    - changes:
+      - pyproject.toml
+      - poetry.lock
+
+site-build:
+  stage: build
+
+  image: $DOCKER_IMAGE_TAG
+
   script:
     - cd site
     - poetry run make html
-    - cd ..
-    - mv site/build/html public
+
+  artifacts:
+    paths:
+      - site/build/html
+
+pages:
+  stage: deploy
+
+  image: $DOCKER_IMAGE_TAG
+
+  script:
+    - cp -r site/build/html public
+
   artifacts:
     paths:
       - public
+
   only:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
