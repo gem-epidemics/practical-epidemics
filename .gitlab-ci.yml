@@ -23,10 +23,11 @@ build-push-docker-image:
     - docker build -t $DOCKER_IMAGE_TAG .
     - docker push $DOCKER_IMAGE_TAG
 
-#  rules:
-#    - changes:
-#      - pyproject.toml
-#      - poetry.lock
+  rules:
+    - changes:
+      - pyproject.toml
+      - poetry.lock
+      - Dockerfile
 
 site-build:
   stage: build
@@ -34,8 +35,10 @@ site-build:
   image: $DOCKER_IMAGE_TAG
 
   script:
+    - echo `pwd`
+    - poetry shell
     - cd site
-    - poetry run make html
+    - make html
 
   artifacts:
     paths:
