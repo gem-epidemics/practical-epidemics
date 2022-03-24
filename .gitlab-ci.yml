@@ -17,6 +17,8 @@ site-build:
   stage: build
   image: python:3.10
   before_script:
+    - apt update
+    - apt install pandoc
     - pip install poetry
     - poetry --version
     - poetry config virtualenvs.in-project true
