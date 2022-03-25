@@ -6,11 +6,13 @@ authors = ["Chris Jewell <c.jewell@lancaster.ac.uk>"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
+jinja2 = "~3.0.3"
 Sphinx = "^4.4.0"
 matplotlib = "^3.5.1"
 tensorflow = "^2.8.0"
 nbsphinx = "^0.8.8"
 sphinx-book-theme = "^0.2.0"
+myst-parser = "^0.17.0"
 
 
 [tool.poetry.dev-dependencies]
