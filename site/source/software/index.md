@@ -10,4 +10,5 @@ in our Gitlab repository!
 :maxdepth: 1
 
 intro_to_tensorflow.ipynb
+tfp_mwg.ipynb
 ```
