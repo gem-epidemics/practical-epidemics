@@ -36,6 +36,7 @@ site-build:
       - .cache/pip
       - .venv
   before_script:
+    - export PATH=$HOME/.local/bin:$PATH
     - poetry --version
     - poetry config virtualenvs.in-project true
     - poetry install -vv
