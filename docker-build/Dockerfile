@@ -1,6 +1,5 @@
 from python:3.10-bullseye
 
-
 RUN apt update
 RUN apt install -y pandoc
 
