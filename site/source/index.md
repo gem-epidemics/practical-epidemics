@@ -9,18 +9,8 @@ programme on (primarily) MCMC for fitting Bayesian infectious disease models.
 :maxdepth: 2
 :caption: Topics
 :hidden:
-  
+
+iddinf/index.md
 software/index.rst
 epidemics/index.rst
-iddinf/index.md
 ```
-
-<!-- introduction/index.md -->
-<!-- software/python/index.md -->
-<!-- iddinf/likelihoods/index.md -->
-<!-- iddinf/mcmc/index.md -->
-<!-- iddinf/mcmc/index.md -->
-<!-- iddinf/data_augmentation/index.md -->
-<!-- iddinf/smc/index.md -->
-<!-- iddinf/case_studies/index.md -->
-
