@@ -1,4 +1,5 @@
-# IDDinf
+IDDinf
+======
 
 IDDinf is a short course on likelihood-based inference methods for infectious disease
 models hosted at Lancaster University. This hands-on course will provide a comprehensive
@@ -10,23 +11,29 @@ work on infectious disease models, and be able to apply them to your own epidemi
 problems.
 
 ```{toctree}
-:maxdepth: 2
-:caption: Topics
+:maxdepth: 1
+:caption: Programming in Python
+	     
+i. Introduction to Python 1 <i-intro-to-python-1.ipynb>
+ii. Introduction to Python 2 <ii-intro-to-python-2.ipynb>
+```
 
-i-intro-to-python-1.ipynb
-ii-intro-to-python-2.ipynb
-01-epi-refresher.ipynb
-02-intro-to-gemlib.ipynb
-03-likelihood-theory-1.ipynb
-04-epidemic-likelihoods.ipynb
-06-bayesian-inference-1.ipynb
-07-bayesian-inference-2.ipynb
-08-intro-to-mcmc.ipynb
-09-mcmc-diagnostics.ipynb
-10-mh-implementation.ipynb
-11-da-mcmc-1.ipynb
-12-da-mcmc-2.ipynb
-13-particle-filters-1.ipynb
-14-particle-filters-2.ipynb
-15-case-study.ipynb
+```{toctree}
+:maxdepth: 1
+:caption: Inference for epidemics
+	     
+1. Epidemic refresher <01-epi-refresher.ipynb>
+2. Models in Gemlib <02-intro-to-gemlib.ipynb>
+3. Likelihood-based inference <03-likelihood-theory-1.ipynb>
+4 & 5 Epidemic likelihoods <04-epidemic-likelihoods.ipynb>
+6. Bayesian Inference 1 <06-bayesian-inference-1.ipynb>
+7. Bayesian Inference 2 <07-bayesian-inference-2.ipynb>
+8. Introducing MCMC <08-intro-to-mcmc.ipynb>
+9. MCMC Diagnostics <09-mcmc-diagnostics.ipynb>
+10. Metropolis-Hastings <10-mh-implementation.ipynb>
+11. Data-augmentation MCMC 1 <11-data-augmentation-mcmc-1.ipynb>
+12. Data-augmentation MCMC 2 <12-data-augmentation-mcmc-2.ipynb>
+13. Particle filters 1 <13-particle-filters-1.ipynb>
+14. Particle filters 2 <14-particle-filters-2.ipynb>
+15. Case study in VL <15-case-study.ipynb>
 ```
