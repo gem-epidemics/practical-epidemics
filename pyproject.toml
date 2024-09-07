@@ -17,8 +17,9 @@ tensorflow-probability = "^0.24.0"
 tensorflow = "^2.17.0"
 scipy = "^1.14.1"
 matplotlib = "^3.9.2"
-gemlib = {git = "https://gitlab.com/gem-epidemics/gemlib.git"}
+gemlib = "^0.11.0"
 tf-keras = "^2.17.0"
+pandas = "^2.2.2"
 
 
 [tool.poetry.dev-dependencies]
