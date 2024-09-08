@@ -22,18 +22,17 @@ ii. Introduction to Python 2 <ii-intro-to-python-2.ipynb>
 :maxdepth: 1
 :caption: Inference for epidemics
 	     
-1. Epidemic refresher <01-epi-refresher.ipynb>
+1. Epidemic modelling refresher <01-epi-refresher.ipynb>
 2. Models in Gemlib <02-intro-to-gemlib.ipynb>
 3. Likelihood-based inference <03-likelihood-theory-1.ipynb>
-4 & 5 Epidemic likelihoods <04-epidemic-likelihoods.ipynb>
+4. & 5. Epidemic likelihoods <04-epidemic-likelihoods.ipynb>
 6. Bayesian Inference 1 <06-bayesian-inference-1.ipynb>
 7. Bayesian Inference 2 <07-bayesian-inference-2.ipynb>
-8. Introducing MCMC <08-intro-to-mcmc.ipynb>
-9. MCMC Diagnostics <09-mcmc-diagnostics.ipynb>
+8. & 9. Introducing MCMC <08-intro-to-mcmc.ipynb>
 10. Metropolis-Hastings <10-mh-implementation.ipynb>
 11. Data-augmentation MCMC 1 <11-data-augmentation-mcmc-1.ipynb>
 12. Data-augmentation MCMC 2 <12-data-augmentation-mcmc-2.ipynb>
 13. Particle filters 1 <13-particle-filters-1.ipynb>
 14. Particle filters 2 <14-particle-filters-2.ipynb>
-15. Case study in VL <15-case-study.ipynb>
+15. Case study <15-case-study.ipynb>
 ```
