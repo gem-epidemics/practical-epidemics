@@ -1558,6 +1558,23 @@ docs = ["jsx-lexer", "myst-parser", "pytest", "pytest-check-links", "pytest-torn
 test = ["check-manifest", "coverage", "jupyterlab-server[test]", "pre-commit", "pytest (>=6.0)", "pytest-check-links (>=0.5)", "pytest-console-scripts", "pytest-cov", "pytest-jupyter (>=0.5.3)", "requests", "requests-cache", "virtualenv"]
 
 [[package]]
+name = "jupyterlab-myst"
+version = "2.4.2"
+description = "Use MyST in JupyterLab"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "jupyterlab_myst-2.4.2-py3-none-any.whl", hash = "sha256:2aa406d4754dcd2ec4fe749b6a2e15f0bc8a6c5c8f6b549419583715d8146230"},
+    {file = "jupyterlab_myst-2.4.2.tar.gz", hash = "sha256:1b06de66d20dc3a865b07d37f54bff8b4ed01501999cc0683f336f0bcb8c6902"},
+]
+
+[package.dependencies]
+jupyter-server = {version = ">=2.0.1,<3", markers = "platform_system != \"Emscripten\""}
+
+[package.extras]
+test = ["coverage", "pytest", "pytest-asyncio", "pytest-cov", "pytest-jupyter[server] (>=0.6.0)"]
+
+[[package]]
 name = "jupyterlab-pygments"
 version = "0.3.0"
 description = "Pygments theme using JupyterLab CSS variables"
@@ -4418,4 +4435,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "5361ed0357d9ada4416a0ee608d1c1b3850a17ca47c80c9dce54c2aad7a909d7"
+content-hash = "010e5e0fbd04387f219466455617eb972efa928dfab9e134755263589dad1455"
