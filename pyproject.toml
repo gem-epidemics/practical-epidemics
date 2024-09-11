@@ -21,6 +21,7 @@ sphinx-design = "^0.6.1"
 linkify-it-py = "^2.0.3"
 sphinx-exercise = {git = "https://github.com/executablebooks/sphinx-exercise.git", rev = "v1.0.0"}
 sphinx-togglebutton = "^0.3.2"
+sphinx-proof = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 jupytext = "^1.16.4"

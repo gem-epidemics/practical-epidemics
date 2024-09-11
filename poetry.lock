@@ -3579,6 +3579,28 @@ reference = "v1.0.0"
 resolved_reference = "2b529389db34ec0fa1f9a538790869dcfc3b3e0a"
 
 [[package]]
+name = "sphinx-proof"
+version = "0.2.0"
+description = "A Sphinx extension for producing proofs, theorems, axioms, etc."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "sphinx-proof-0.2.0.tar.gz", hash = "sha256:12e7deb3feb3e16b9d59f7c3db8bb16cf6d465bc209aa6b99924d1000f9b9ce9"},
+    {file = "sphinx_proof-0.2.0-py3-none-any.whl", hash = "sha256:fcfec4bfc029ff30c41c44dbe5da9051ff0cee02688c6c6e325c21e00aa3b68a"},
+]
+
+[package.dependencies]
+docutils = ">=0.15"
+sphinx = "*"
+sphinx-book-theme = "*"
+
+[package.extras]
+all = ["beautifulsoup4", "black", "coverage", "defusedxml", "flake8", "myst-parser", "pre-commit", "pytest (>=7.1,<8.0)", "pytest-cov", "pytest-regressions", "sphinx (>=5.0)", "sphinx-book-theme", "sphinx-togglebutton", "sphinxcontrib-bibtex", "texsoup"]
+code-style = ["black", "flake8", "pre-commit"]
+rtd = ["myst-parser", "sphinx (>=5.0)", "sphinx-book-theme", "sphinx-togglebutton", "sphinxcontrib-bibtex"]
+testing = ["beautifulsoup4", "coverage", "defusedxml", "myst-parser", "pytest (>=7.1,<8.0)", "pytest-cov", "pytest-regressions", "texsoup"]
+
+[[package]]
 name = "sphinx-togglebutton"
 version = "0.3.2"
 description = "Toggle page content and collapse admonitions in Sphinx."
@@ -4435,4 +4457,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "010e5e0fbd04387f219466455617eb972efa928dfab9e134755263589dad1455"
+content-hash = "12b3c70b25bbc1ac6174599b5d478ba2e6656ab731eaf028bdd39494dc6712b0"
