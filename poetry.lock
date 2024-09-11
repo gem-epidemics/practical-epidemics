@@ -2234,25 +2234,6 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx", "sphinxcontrib-github-al
 test = ["pep440", "pre-commit", "pytest", "testpath"]
 
 [[package]]
-name = "nbsphinx"
-version = "0.8.12"
-description = "Jupyter Notebook Tools for Sphinx"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "nbsphinx-0.8.12-py3-none-any.whl", hash = "sha256:c15b681c7fce287000856f91fe1edac50d29f7b0c15bbc746fbe55c8eb84750b"},
-    {file = "nbsphinx-0.8.12.tar.gz", hash = "sha256:76570416cdecbeb21dbf5c3d6aa204ced6c1dd7ebef4077b5c21b8c6ece9533f"},
-]
-
-[package.dependencies]
-docutils = "*"
-jinja2 = "*"
-nbconvert = "!=5.4"
-nbformat = "*"
-sphinx = ">=1.8"
-traitlets = ">=5"
-
-[[package]]
 name = "nest-asyncio"
 version = "1.6.0"
 description = "Patch asyncio to allow nested event loops"
@@ -3557,24 +3538,48 @@ theme-sbt = ["sphinx-book-theme (>=1.1,<2.0)"]
 
 [[package]]
 name = "sphinx-exercise"
-version = "0.4.1"
+version = "1.0.0"
 description = "A Sphinx extension for producing exercises and solutions."
 optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "sphinx-exercise-0.4.1.tar.gz", hash = "sha256:cc24a2770bf75b88423acc27eb3f87759fa7cbe2137a6ef797a067597c28e311"},
-    {file = "sphinx_exercise-0.4.1-py3-none-any.whl", hash = "sha256:0465d452ed852d5dc09b3a1b8527eedfd9ecd3899d0d0c68ea0fadc603dba16b"},
-]
+python-versions = ">=3.9"
+files = []
+develop = false
 
 [package.dependencies]
-sphinx = ">=4"
+sphinx = ">=5"
 sphinx-book-theme = "*"
 
 [package.extras]
-all = ["beautifulsoup4", "black", "coverage", "docutils (>=0.15,<0.19)", "flake8 (>=3.7.0,<3.8.0)", "matplotlib", "myst-nb (>=0.17.1,<0.18.0)", "pre-commit", "pytest (>=3.6,<4)", "pytest-cov", "pytest-regressions", "sphinx (>=4,<6)", "sphinx-book-theme", "texsoup"]
+all = ["beautifulsoup4", "black", "coverage", "defusedxml", "flake8 (>=3.7.0,<3.8.0)", "matplotlib (==3.8.*)", "myst-nb (>=1.0.0,<1.1.0)", "pre-commit", "pytest (>=8.0.0,<8.1.0)", "pytest-cov", "pytest-regressions", "sphinx (>=5,<8)", "sphinx-book-theme", "sphinx-togglebutton", "texsoup"]
 code-style = ["black", "flake8 (>=3.7.0,<3.8.0)", "pre-commit"]
-rtd = ["myst-nb (>=0.17.1,<0.18.0)", "sphinx (>=4,<6)", "sphinx-book-theme"]
-testing = ["beautifulsoup4", "coverage", "docutils (>=0.15,<0.19)", "matplotlib", "myst-nb (>=0.17.1,<0.18.0)", "pytest (>=3.6,<4)", "pytest-cov", "pytest-regressions", "sphinx (>=4,<6)", "texsoup"]
+rtd = ["myst-nb (>=1.0.0,<1.1.0)", "sphinx (>=5,<8)", "sphinx-book-theme", "sphinx-togglebutton"]
+testing = ["beautifulsoup4", "coverage", "defusedxml", "matplotlib (==3.8.*)", "myst-nb (>=1.0.0,<1.1.0)", "pytest (>=8.0.0,<8.1.0)", "pytest-cov", "pytest-regressions", "sphinx (>=5,<8)", "texsoup"]
+
+[package.source]
+type = "git"
+url = "https://github.com/executablebooks/sphinx-exercise.git"
+reference = "v1.0.0"
+resolved_reference = "2b529389db34ec0fa1f9a538790869dcfc3b3e0a"
+
+[[package]]
+name = "sphinx-togglebutton"
+version = "0.3.2"
+description = "Toggle page content and collapse admonitions in Sphinx."
+optional = false
+python-versions = "*"
+files = [
+    {file = "sphinx-togglebutton-0.3.2.tar.gz", hash = "sha256:ab0c8b366427b01e4c89802d5d078472c427fa6e9d12d521c34fa0442559dc7a"},
+    {file = "sphinx_togglebutton-0.3.2-py3-none-any.whl", hash = "sha256:9647ba7874b7d1e2d43413d8497153a85edc6ac95a3fea9a75ef9c1e08aaae2b"},
+]
+
+[package.dependencies]
+docutils = "*"
+setuptools = "*"
+sphinx = "*"
+wheel = "*"
+
+[package.extras]
+sphinx = ["matplotlib", "myst-nb", "numpy", "sphinx-book-theme", "sphinx-design", "sphinx-examples"]
 
 [[package]]
 name = "sphinxcontrib-applehelp"
@@ -4413,4 +4418,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "f203beedb413ac6c6c1399d2bf353a1a1ed25c5e8b33cebc80d81f79f0af51e2"
+content-hash = "5361ed0357d9ada4416a0ee608d1c1b3850a17ca47c80c9dce54c2aad7a909d7"
