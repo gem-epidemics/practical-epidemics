@@ -30,7 +30,7 @@ release = "0.1.1"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["myst_nb", "sphinx_design", "sphinx_exercise"]
+extensions = ["myst_nb", "sphinx_design", "sphinx_exercise", "sphinx_togglebutton"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -60,4 +60,19 @@ html_favicon = "images/favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-myst_enable_extensions = ["colon_fence", "amsmath", "dollarmath"]
+myst_enable_extensions = [
+    "amsmath",
+    "attrs_inline",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
