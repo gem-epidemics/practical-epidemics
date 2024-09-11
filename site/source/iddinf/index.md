@@ -30,9 +30,9 @@ ii. Introduction to Python 2 <ii-intro-to-python-2.ipynb>
 7. Bayesian Inference 2  <07-bayesian-inference-2.ipynb>
 8. & 9. Introducing MCMC <08-intro-to-mcmc.ipynb>
 10. Metropolis-Hastings <10-mh-implementation.ipynb>
-11. Data-augmentation MCMC 1 <!--11-data-augmentation-mcmc-1.ipynb-->
+11. Data-augmentation MCMC 1 <11-data-augmentation-mcmc-1.ipynb>
 12. Data-augmentation MCMC 2 <!--12-data-augmentation-mcmc-2.ipynb-->
-13. Particle filters 1 <!--13-particle-filters-1.ipynb-->
+13. Particle filters 1 <13-particle-filters-2.ipynb>
 14. Particle filters 2 <!--14-particle-filters-2.ipynb-->
 15. Case study <!--15-case-study.ipynb-->
 ```
