@@ -14,8 +14,8 @@ problems.
 :maxdepth: 1
 :caption: Programming in Python
 	     
-i. Introduction to Python 1 <i-intro-to-python-1.ipynb>
-ii. Introduction to Python 2 <ii-intro-to-python-2.ipynb>
+i. Introduction to Python 1 <i_intro_to_python_1.ipynb>
+ii. Introduction to Python 2 <ii_intro_to_python_2.ipynb>
 ```
 
 ```{toctree}
