@@ -34,5 +34,6 @@ ii. Introduction to Python 2 <ii_intro_to_python_2.ipynb>
 12. Data-augmentation MCMC 2 <12_data_augmentation_mcmc_2.ipynb>
 13. Particle filters 1 <13_particle_filters_1.md>
 14. Particle filters 2 <14_particle_filters_2.ipynb>
-15. Case study <15_case_study.ipynb>
+15. An end-to-end tutorial <15_end_to_end.ipynb>
+16. Case study <16_case_study.ipynb>
 ```
