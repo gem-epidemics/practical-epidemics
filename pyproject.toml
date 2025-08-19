@@ -20,6 +20,7 @@ sphinx-exercise = {git = "https://github.com/executablebooks/sphinx-exercise.git
 sphinx-togglebutton = "^0.3.2"
 sphinx-proof = "^0.2.0"
 seaborn = "^0.13.2"
+statsmodels = "^0.14.5"
 
 [tool.poetry.group.dev.dependencies]
 jupytext = "^1.16.4"
