@@ -35,6 +35,7 @@ extensions = [
     "sphinx_design",
     "sphinx_exercise",
     "sphinx_togglebutton",
+    "sphinxcontrib.mermaid",
     "sphinx_proof",
 ]
 
@@ -46,6 +47,7 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+nb_execution_timeout = 120
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -66,6 +68,7 @@ html_favicon = "images/favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+myst_fence_as_directive = ["mermaid"]
 myst_enable_extensions = [
     "amsmath",
     "attrs_inline",

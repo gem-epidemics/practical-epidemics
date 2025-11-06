@@ -7,20 +7,22 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.14"
-jinja2 = "~3.0.3"
+Sphinx = "^8.2.3"
+sphinx-book-theme = "^1.1.4"
+sphinx-design = "^0.6.1"
+myst-nb = "^1.3.0"
 scipy = "^1.14.1"
 matplotlib = "^3.9.2"
 gemlib = {git = "https://gitlab.com/gem-epidemics/gemlib", branch="jax_dev"}
 pandas = "^2.2.2"
-sphinx-book-theme = "^1.1.3"
-myst-nb = "^1.1.1"
-sphinx-design = "^0.6.1"
 linkify-it-py = "^2.0.3"
-sphinx-exercise = {git = "https://github.com/executablebooks/sphinx-exercise.git", rev = "v1.0.0"}
-sphinx-togglebutton = "^0.3.2"
-sphinx-proof = "^0.2.0"
 seaborn = "^0.13.2"
 statsmodels = "^0.14.5"
+sphinx-exercise = "^1.2.0"
+sphinxcontrib-mermaid = "^1.0.0"
+sphinx-togglebutton = "^0.3.2"
+sphinx-proof = "^0.3.0"
+myst-parser = "^4.0.1"
 
 [tool.poetry.group.dev.dependencies]
 jupytext = "^1.16.4"
