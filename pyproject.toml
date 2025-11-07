@@ -1,35 +1,60 @@
-[tool.poetry]
+[project]
 name = "practical-epidemics"
 version = "0.1.0"
-description = ""
-authors = ["Chris Jewell <c.jewell@lancaster.ac.uk>"]
-package-mode = false
+description = "Tutorials and howtos for implementing infectious disease models using gemlib"
+authors = [
+	{ name = "Chris Jewell", email = "c.jewell@lancaster.ac.uk" },
+        { name = "Jess Bridgen", email = "j.bridgen@lancaster.ac.uk"},
+	{ name = "Alin Morariu", email = "a.morariu@lancaster.ac.uk"},
+	{ name = "Lloyd Chapman", email="l.chapman4@lancaster.ac.uk"},
+]
+requires-python = ">=3.11,<3.14"
+readme = "README.md"
+license = "MIT"
+maintainers = [
+    { name = "Chris Jewell", email = "c.jewell@lancaster.ac.uk"},
+]
+keywords = [
+    "infectious disease",
+    "epidemic",
+    "Bayesian",
+    "inference",
+    "probabilistic programming",
+]
+dependencies = [
+    "Sphinx>=8.2.3,<9",
+    "sphinx-book-theme>=1.1.4,<2",
+    "sphinx-design>=0.6.1,<0.7",
+    "myst-nb>=1.3.0,<2",
+    "scipy>=1.14.1,<2",
+    "matplotlib>=3.9.2,<4",
+    "gemlib",
+    "pandas>=2.2.2,<3",
+    "linkify-it-py>=2.0.3,<3",
+    "seaborn>=0.13.2,<0.14",
+    "statsmodels>=0.14.5,<0.15",
+    "sphinx-exercise>=1.2.0,<2",
+    "sphinxcontrib-mermaid>=1.0.0,<2",
+    "sphinx-togglebutton>=0.3.2,<0.4",
+    "sphinx-proof>=0.3.0,<0.4",
+    "myst-parser>=4.0.1,<5",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.14"
-Sphinx = "^8.2.3"
-sphinx-book-theme = "^1.1.4"
-sphinx-design = "^0.6.1"
-myst-nb = "^1.3.0"
-scipy = "^1.14.1"
-matplotlib = "^3.9.2"
-gemlib = {git = "https://gitlab.com/gem-epidemics/gemlib", branch="jax_dev"}
-pandas = "^2.2.2"
-linkify-it-py = "^2.0.3"
-seaborn = "^0.13.2"
-statsmodels = "^0.14.5"
-sphinx-exercise = "^1.2.0"
-sphinxcontrib-mermaid = "^1.0.0"
-sphinx-togglebutton = "^0.3.2"
-sphinx-proof = "^0.3.0"
-myst-parser = "^4.0.1"
+[dependency-groups]
+dev = [
+    "jupytext>=1.16.4,<2",
+    "pydot>=1.4.2,<2",
+    "jupyterlab>=3.2.9,<4",
+    "jupyterlab-myst>=2.4.2,<3",
+]
 
-[tool.poetry.group.dev.dependencies]
-jupytext = "^1.16.4"
-pydot = "^1.4.2"
-jupyterlab = "^3.2.9"
-jupyterlab-myst = "^2.4.2"
+[tool.uv]
+package = false
+default-groups = [ "dev" ]
+
+[tool.uv.sources]
+gemlib = { git = "https://gitlab.com/gem-epidemics/gemlib", branch = "jax_dev" }
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
