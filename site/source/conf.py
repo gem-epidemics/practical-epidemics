@@ -37,6 +37,7 @@ extensions = [
     "sphinx_togglebutton",
     "sphinxcontrib.mermaid",
     "sphinx_proof",
+    "sphinx_code_examples",
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -39,6 +39,7 @@ dependencies = [
     "sphinx-proof>=0.3.0,<0.4",
     "myst-parser>=4.0.1,<5",
     "scikit-learn>=1.7.2",
+    "sphinx-code-examples>=1.2.1",
 ]
 
 [dependency-groups]
@@ -54,8 +55,7 @@ package = false
 default-groups = [ "dev" ]
 
 [tool.uv.sources]
-#gemlib = { git = "https://gitlab.com/gem-epidemics/gemlib", branch = "jax_dev" }
-gemlib = { path = "../gemlib", editable = true }
+gemlib = { git = "https://gitlab.com/gem-epidemics/gemlib", branch = "jax_dev" }
 
 [build-system]
 requires = ["hatchling"]
