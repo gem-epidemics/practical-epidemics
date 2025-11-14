@@ -86,3 +86,5 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+
+proof_minimal_theme = True
