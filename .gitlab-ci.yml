@@ -46,9 +46,9 @@ site-build:
     - cd site
     - uv run make html
   artifacts:
+    when: always
     paths:
       - site/build/html
-
 
 pages:
   stage: deploy
