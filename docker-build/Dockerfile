@@ -5,6 +5,6 @@ RUN apt install -y pandoc
 
 RUN pip install --upgrade pip --no-cache-dir
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-ENV PATH /root/.poetry/bin:$PATH
+ENV PATH /root/.local/bin:$PATH
