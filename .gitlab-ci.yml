@@ -32,7 +32,7 @@ build-and-push-build-image:
 
 site-build:
   stage: build
-  needs: ["build-and-push-build-image"]
+  needs: []
   image: $DOCKER_IMAGE_TAG
   cache:
     key: site-build-${CI_COMMIT_REF_SLUG}
@@ -46,7 +46,6 @@ site-build:
     - cd site
     - uv run make html
   artifacts:
-    when: always
     paths:
       - site/build/html
 
