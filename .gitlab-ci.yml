@@ -32,6 +32,7 @@ build-and-push-build-image:
 
 site-build:
   stage: build
+  needs: build-and-push-build-image
   image: $DOCKER_IMAGE_TAG
   cache:
     key: site-build-${CI_COMMIT_REF_SLUG}
