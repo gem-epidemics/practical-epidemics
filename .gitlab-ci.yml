@@ -48,6 +48,9 @@ site-build:
   artifacts:
     paths:
       - site/build/html
+  rules:
+    - when: always
+
 
 pages:
   stage: deploy
