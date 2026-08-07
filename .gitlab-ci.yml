@@ -40,9 +40,7 @@ site-build:
       - .venv
   before_script:
     - export PATH=$HOME/.local/bin:$PATH
-    - poetry --version
-    - poetry config virtualenvs.in-project true
-    - poetry install -vv
+    - uv --version
   script:
     - cd site
     - uv run make html
