@@ -49,6 +49,9 @@ dev = [
     "pydot>=1.4.2,<2",
     "jupyterlab-myst>=2.4.2,<3",
 ]
+doc = [
+    "typer>=0.27.1",
+]
 
 [tool.uv]
 package = false
