@@ -21,6 +21,7 @@ ii. Introduction to Python 2 <ii_intro_to_python_2.ipynb>
 ```{toctree}
 :maxdepth: 1
 :caption: Inference for epidemics
+:numbered:
 	     
 1. Epidemic modelling refresher <epi_refresher.ipynb>
 2. Models in Gemlib <intro_to_gemlib.ipynb>
