@@ -92,6 +92,6 @@ colabize:
     - git status
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
-    - git push
+    - git push origin main
   rules:
     - when: always
