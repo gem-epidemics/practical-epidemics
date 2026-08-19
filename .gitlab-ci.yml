@@ -87,3 +87,5 @@ colabize:
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
     - git push
+  rules:
+    - when: always
