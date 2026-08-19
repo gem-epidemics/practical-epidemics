@@ -69,16 +69,14 @@ colabize:
   needs: []
   image: $DOCKER_IMAGE_TAG
   before_script:
-    - export PATH=$HOME/.local/bin:$PATH
-    - uv --version
     - git config --global user.email "gitlab-ci@dummy.co.uk"
     - git config --global user.name "GitLab CI"
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
     - cd colab
     - git checkout main
-    - git pull --rebase
-  script:
+    - ls iddinf
     - cd ..
+  script:
     - INPUTDIR=site/source/iddinf
     - OUTPUTDIR=colab/iddinf
     - mkdir -p $OUTPUTDIR
