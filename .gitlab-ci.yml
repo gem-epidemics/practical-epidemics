@@ -8,7 +8,7 @@ variables:
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
   DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   DOCKER_TLS_CERTDIR: "/certs"
-
+  GIT_SUBMODULE_STRATEGY: normal
 
 build-and-push-build-image:
   stage: docker-image-build
@@ -64,3 +64,29 @@ pages:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
+colabize:
+  stage: deploy
+  needs: []
+  image: $DOCKER_IMAGE_TAG
+  before_script:
+    - export PATH=$HOME/.local/bin:$PATH
+    - uv --version
+    - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+  script:
+    - INPUTDIR=site/source/iddinf
+    - OUTPUTDIR=colab/iddinf
+    - mkdir -p $OUTPUTDIR
+    - for NB in $(find $INPUTDIR -maxdepth 1 -name "*.ipynb");
+      do
+        OUTPUTFILE=$OUTPUTDIR/$(basename $NB)
+        echo Processing $NB to $OUTPUTFILE
+        uv run python site/source/myst_exercise_to_colab.py $NB $OUTPUTFILE
+      done
+  after_script:
+    - cd colab
+    - git add .
+    - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
+    - git push
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
