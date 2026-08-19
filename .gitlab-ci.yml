@@ -83,7 +83,7 @@ colabize:
       do
         OUTPUTFILE=$OUTPUTDIR/$(basename $NB)
         echo Processing $NB to $OUTPUTFILE
-        uv run python scripts/myst_exercise_to_colab.py $NB $OUTPUTFILE
+        python scripts/myst_exercise_to_colab.py $NB -o $OUTPUTFILE
       done
   after_script:
     - cd colab
