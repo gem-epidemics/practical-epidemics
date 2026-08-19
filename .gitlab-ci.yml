@@ -88,8 +88,10 @@ colabize:
   after_script:
     - cd colab
     - git status
+    - git checkout main
+    - git status
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
-    - git push origin HEAD:main
+    - git push
   rules:
     - when: always
