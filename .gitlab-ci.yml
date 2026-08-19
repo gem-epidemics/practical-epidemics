@@ -74,6 +74,9 @@ colabize:
     - git config --global user.email "gitlab-ci@dummy.co.uk"
     - git config --global user.name "GitLab CI"
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+    - cd colab
+    - git checkout main
+    - git pull --rebase
   script:
     - INPUTDIR=site/source/iddinf
     - OUTPUTDIR=colab/iddinf
@@ -86,10 +89,6 @@ colabize:
         python scripts/myst_exercise_to_colab.py $NB -o $OUTPUTFILE
       done
   after_script:
-    - cd colab
-    - git status
-    - git checkout main
-    - git pull
     - git status
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
