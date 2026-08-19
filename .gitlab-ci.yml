@@ -78,6 +78,7 @@ colabize:
     - git checkout main
     - git pull --rebase
   script:
+    - cd ..
     - INPUTDIR=site/source/iddinf
     - OUTPUTDIR=colab/iddinf
     - mkdir -p $OUTPUTDIR
@@ -89,6 +90,7 @@ colabize:
         python scripts/myst_exercise_to_colab.py $NB -o $OUTPUTFILE
       done
   after_script:
+    - cd colab
     - git status
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
