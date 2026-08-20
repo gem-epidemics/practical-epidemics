@@ -80,18 +80,13 @@ colabize:
     - INPUTDIR=site/source/iddinf
     - OUTPUTDIR=colab/iddinf
     - mkdir -p $OUTPUTDIR
-    - |+
-      for NB in $(find $INPUTDIR -maxdepth 1 -name "*.ipynb")
-      do
-        OUTPUTFILE=$OUTPUTDIR/$(basename $NB)
-        echo Processing $NB to $OUTPUTFILE
-        python scripts/myst_exercise_to_colab.py $NB -o $OUTPUTFILE
-      done
+    - scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
   after_script:
     - cd colab
     - git status
     - git add .
     - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
     - git push origin main
-  rules:
-    - when: always
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
