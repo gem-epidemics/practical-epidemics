@@ -41,6 +41,7 @@ dependencies = [
     "scikit-learn>=1.7.2",
     "sphinx-code-examples>=1.2.1",
     "jupyterlab>=4.6.2",
+    "particles>=0.3",
 ]
 
 [dependency-groups]
