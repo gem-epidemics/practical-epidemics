@@ -51,7 +51,7 @@ html_static_path = ["_static"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-nb_execution_timeout = 120
+nb_execution_timeout = 300
 
 # -- Options for HTML output -------------------------------------------------
 
