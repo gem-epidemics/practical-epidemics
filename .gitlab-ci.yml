@@ -1,45 +1,25 @@
 stages:
-  - docker-image-build
   - build
   - deploy
 
 
 variables:
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
-  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  DOCKER_TLS_CERTDIR: "/certs"
   GIT_SUBMODULE_STRATEGY: normal
-
-build-and-push-build-image:
-  stage: docker-image-build
-
-  image: docker:latest
-  services:
-    - docker:dind
-  tags:
-    - dind
-  script:
-    - export BUILDX_NO_DEFAULT_ATTESTATIONS="1"
-    - echo Creating Docker image $DOCKER_IMAGE_TAG
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $DOCKER_IMAGE_TAG docker-build
-    - docker push $DOCKER_IMAGE_TAG
-
-  rules:
-    - changes:
-      - docker-build/Dockerfile
 
 
 site-build:
   stage: build
   needs: []
-  image: $DOCKER_IMAGE_TAG
+  image: python:3.13
   cache:
     key: site-build-${CI_COMMIT_REF_SLUG}
     paths:
       - .cache/pip
       - .venv
   before_script:
+    - apt install -y pandoc
+    - curl -LsSf https://astral.sh/uv/install.sh | sh
     - export PATH=$HOME/.local/bin:$PATH
     - uv --version
   script:
@@ -67,7 +47,7 @@ pages:
 colabize:
   stage: deploy
   needs: []
-  image: $DOCKER_IMAGE_TAG
+  image: python:3.13
   before_script:
     - git config --global user.email "gitlab-ci@dummy.co.uk"
     - git config --global user.name "GitLab CI"
