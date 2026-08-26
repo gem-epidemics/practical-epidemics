@@ -28,10 +28,10 @@ Models in Gemlib <intro_to_gemlib.ipynb>
 Likelihood-based inference <likelihood_theory_1.ipynb>
 Epidemic likelihoods 1 <epidemic_likelihoods_1.ipynb>
 Epidemic likelihoods 2 <epidemic_likelihoods_2.ipynb>
-Bayesian Inference 1   <bayesian_inference_1.ipynb>
+Bayesian Inference 1  <bayesian_inference_1.ipynb>
 Bayesian Inference 2  <bayesian_inference_2.ipynb>
-Introducing MCMC <intro_to_mcmc.ipynb>
-Data augmentation MCMC 1 <data_augmentation_mcmc.ipynb>
+Introduction to MCMC <intro_to_mcmc.ipynb>
+Data augmentation MCMC <data_augmentation_mcmc.ipynb>
 MCMC diagnostics <mcmc_diagnostics.ipynb>
 MCMC case study <mcmc_case_study.ipynb>
 Metropolis-Hastings <mh_implementation.ipynb>
