@@ -1826,6 +1826,7 @@ dependencies = [
     { name = "sphinx-togglebutton" },
     { name = "sphinxcontrib-mermaid" },
     { name = "statsmodels" },
+    { name = "xarray" },
 ]
 
 [package.dev-dependencies]
@@ -1860,6 +1861,7 @@ requires-dist = [
     { name = "sphinx-togglebutton", specifier = ">=0.3.2,<0.4" },
     { name = "sphinxcontrib-mermaid", specifier = ">=1.0.0,<2" },
     { name = "statsmodels", specifier = ">=0.14.5,<0.15" },
+    { name = "xarray", specifier = ">=2026.7.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -2985,6 +2987,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/87/6a/0e56111cbb3320151eed5d3821ee1373be13e05b376ea0870711f18810c3/wrapt-2.0.1-cp313-cp313t-win_amd64.whl", hash = "sha256:83ce30937f0ba0d28818807b303a412440c4b63e39d3d8fc036a94764b728c92", size = 63240, upload-time = "2025-11-07T00:44:30.935Z" },
     { url = "https://files.pythonhosted.org/packages/1d/54/5ab4c53ea1f7f7e5c3e7c1095db92932cc32fd62359d285486d00c2884c3/wrapt-2.0.1-cp313-cp313t-win_arm64.whl", hash = "sha256:4b55cacc57e1dc2d0991dbe74c6419ffd415fb66474a02335cb10efd1aa3f84f", size = 60416, upload-time = "2025-11-07T00:44:32.002Z" },
     { url = "https://files.pythonhosted.org/packages/15/d1/b51471c11592ff9c012bd3e2f7334a6ff2f42a7aed2caffcf0bdddc9cb89/wrapt-2.0.1-py3-none-any.whl", hash = "sha256:4d2ce1bf1a48c5277d7969259232b57645aae5686dba1eaeade39442277afbca", size = 44046, upload-time = "2025-11-07T00:45:32.116Z" },
+]
+
+[[package]]
+name = "xarray"
+version = "2026.7.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ea/96/3f7bdd00e505ec3698903415b30135024703e017b28c6b61f98da3193b0d/xarray-2026.7.0.tar.gz", hash = "sha256:361b495928fdbf5b58d0969bb6775339019da5e93ca74d61ddf4eb5edd6ce604", size = 3145348, upload-time = "2026-07-09T17:38:26.515Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/57/5b/28365212062939d213802e5e5fe855cdb231e1c2a93254ba1690066504e3/xarray-2026.7.0-py3-none-any.whl", hash = "sha256:bf9dd130b93806dc78e90c1b7ac24851b31557b888674c53622235691cf21824", size = 1426778, upload-time = "2026-07-09T17:38:24.224Z" },
 ]
 
 [[package]]

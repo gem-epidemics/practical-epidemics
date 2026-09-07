@@ -42,6 +42,7 @@ dependencies = [
     "sphinx-code-examples>=1.2.1",
     "jupyterlab>=4.6.2",
     "particles>=0.3",
+    "xarray>=2026.7.0",
 ]
 
 [dependency-groups]
