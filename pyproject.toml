@@ -60,7 +60,7 @@ package = false
 default-groups = [ "dev" ]
 
 [tool.uv.sources]
-gemlib = { git = "https://gitlab.com/gem-epidemics/gemlib", branch = "jax_dev" }
+gemlib = { git = "https://gitlab.com/gem-epidemics/gemlib", tag = "v0.15.0" }
 
 [build-system]
 requires = ["hatchling"]
