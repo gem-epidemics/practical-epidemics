@@ -37,5 +37,5 @@ MCMC case study <mcmc_case_study.ipynb>
 Metropolis-Hastings <mh_implementation.ipynb>
 Approximate Bayesian Computation (ABC) <approximate_bayesian_computation.ipynb>
 Particle filters <particle_filters.ipynb>
-An extended case study <extended_case_study.ipynb>
+Extended case study <extended_case_study.ipynb>
 ```
