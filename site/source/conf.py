@@ -52,7 +52,7 @@ html_static_path = ["_static"]
 exclude_patterns = []
 
 nb_execution_timeout = 300
-nb_execution_mode = "auto"
+nb_execution_mode = "off"
 nb_execution_excludepatterns = ["iddinf/mcmc_case_study.ipynb"]
 
 # -- Options for HTML output -------------------------------------------------
