@@ -35,17 +35,25 @@ extensions = [
     "sphinx_design",
     "sphinx_exercise",
     "sphinx_togglebutton",
+    "sphinxcontrib.mermaid",
     "sphinx_proof",
+    "sphinx_code_examples",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
+
+# Static files
+html_static_path = ["_static"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+nb_execution_timeout = 300
+nb_execution_mode = "off"
+nb_execution_excludepatterns = ["iddinf/mcmc_case_study.ipynb"]
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -66,6 +74,7 @@ html_favicon = "images/favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+myst_fence_as_directive = ["mermaid"]
 myst_enable_extensions = [
     "amsmath",
     "attrs_inline",
@@ -82,3 +91,5 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+
+proof_minimal_theme = True

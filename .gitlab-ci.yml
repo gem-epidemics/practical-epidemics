@@ -1,53 +1,36 @@
 stages:
-  - docker-image-build
   - build
   - deploy
 
 
 variables:
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
-  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  DOCKER_TLS_CERTDIR: "/certs"
-
-
-build-and-push-build-image:
-  stage: docker-image-build
-
-  image: docker:latest
-  services:
-    - docker:dind
-  tags:
-    - dind
-  script:
-    - echo Creating Docker image $DOCKER_IMAGE_TAG
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $DOCKER_IMAGE_TAG docker-build
-    - docker push $DOCKER_IMAGE_TAG
-
-  rules:
-    - changes:
-      - docker-build/Dockerfile
+  GIT_SUBMODULE_STRATEGY: normal
 
 
 site-build:
   stage: build
-  image: $DOCKER_IMAGE_TAG
+  needs: []
+  image: python:3.13
   cache:
     key: site-build-${CI_COMMIT_REF_SLUG}
     paths:
       - .cache/pip
       - .venv
   before_script:
+    - apt update
+    - apt install -y pandoc
+    - curl -LsSf https://astral.sh/uv/install.sh | sh
     - export PATH=$HOME/.local/bin:$PATH
-    - poetry --version
-    - poetry config virtualenvs.in-project true
-    - poetry install -vv
+    - uv --version
   script:
     - cd site
-    - poetry run make html
+    - uv run make html
   artifacts:
     paths:
       - site/build/html
+  rules:
+    - when: always
 
 
 pages:
@@ -62,3 +45,29 @@ pages:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
+colabize:
+  stage: deploy
+  needs: []
+  image: python:3.13
+  before_script:
+    - git config --global user.email "gitlab-ci@dummy.co.uk"
+    - git config --global user.name "GitLab CI"
+    - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+    - cd colab
+    - git checkout main
+    - ls iddinf
+    - cd ..
+  script:
+    - INPUTDIR=site/source/iddinf
+    - OUTPUTDIR=colab/iddinf
+    - mkdir -p $OUTPUTDIR
+    - scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
+  after_script:
+    - cd colab
+    - git status
+    - git add .
+    - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
+    - git push origin main
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

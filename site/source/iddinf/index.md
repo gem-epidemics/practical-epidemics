@@ -21,19 +21,21 @@ ii. Introduction to Python 2 <ii_intro_to_python_2.ipynb>
 ```{toctree}
 :maxdepth: 1
 :caption: Inference for epidemics
+:numbered:
 	     
-1. Epidemic modelling refresher <01_epi_refresher.ipynb>
-2. Models in Gemlib <02_intro_to_gemlib.ipynb>
-3. Likelihood-based inference <03_likelihood_theory_1.ipynb>
-4. & 5. Epidemic likelihoods <04_epidemic_likelihoods.ipynb>
-6. Bayesian Inference 1   <06_bayesian_inference_1.ipynb>
-7. Bayesian Inference 2  <07_bayesian_inference_2.ipynb>
-8. & 9. Introducing MCMC <08_intro_to_mcmc.ipynb>
-10. Metropolis-Hastings <10_mh_implementation.ipynb>
-11. Data-augmentation MCMC 1 <11_data_augmentation_mcmc_1.ipynb>
-12. Data-augmentation MCMC 2 <12_data_augmentation_mcmc_2.ipynb>
-13. Particle filters 1 <13_particle_filters_1.md>
-14. Particle filters 2 <14_particle_filters_2.ipynb>
-15. An end-to-end `gemlib` tutorial <15_end_to_end.ipynb>
-16. Case study <16_case_study.ipynb>
+Epidemic modelling refresher <epi_refresher.ipynb>
+Models in Gemlib <intro_to_gemlib.ipynb>
+Likelihood-based inference <likelihood_theory_1.ipynb>
+Epidemic likelihoods 1 <epidemic_likelihoods_1.ipynb>
+Epidemic likelihoods 2 <epidemic_likelihoods_2.ipynb>
+Bayesian Inference 1  <bayesian_inference_1.ipynb>
+Bayesian Inference 2  <bayesian_inference_2.ipynb>
+Introduction to MCMC <intro_to_mcmc.ipynb>
+Data augmentation MCMC <data_augmentation_mcmc.ipynb>
+MCMC diagnostics <mcmc_diagnostics.ipynb>
+MCMC case study <mcmc_case_study.ipynb>
+Metropolis-Hastings <mh_implementation.ipynb>
+Approximate Bayesian Computation (ABC) <approximate_bayesian_computation.ipynb>
+Particle filters <particle_filters.ipynb>
+Extended case study <extended_case_study.ipynb>
 ```

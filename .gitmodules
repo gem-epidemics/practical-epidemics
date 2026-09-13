@@ -1,0 +1,3 @@
+[submodule "colab"]
+	path = colab
+	url = https://github.com/gem-epidemics/colab.git
