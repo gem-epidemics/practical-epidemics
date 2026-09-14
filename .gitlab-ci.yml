@@ -55,6 +55,8 @@ colabize:
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
     - cd colab
     - git checkout main
+    - git fetch --all
+    - git merge
     - ls iddinf
     - cd ..
   script:
