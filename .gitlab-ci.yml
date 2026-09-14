@@ -53,6 +53,7 @@ colabize:
     - git config --global user.email "gitlab-ci@dummy.co.uk"
     - git config --global user.name "GitLab CI"
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+    - git config pull.ff only
     - cd colab
     - git checkout main
     - git pull origin main
