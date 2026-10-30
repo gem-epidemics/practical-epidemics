@@ -54,21 +54,19 @@ colabize:
     - git config --global user.name "GitLab CI"
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
     - cd colab
-    - git checkout main
-    - git pull --rebase origin main
-    - ls iddinf
+    - git fetch origin main
+    - git checkout -B main origin/main
+    - git clean -ffdx
     - cd ..
   script:
     - INPUTDIR=site/source/iddinf
     - OUTPUTDIR=colab/iddinf
     - mkdir -p $OUTPUTDIR
     - scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
-  after_script:
     - cd colab
-    - git status
-    - git add .
-    - git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
+    - git add -A
+    - git diff --cached --quiet || git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
     - git push origin main
-  only:
-    variables:
-      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    
+  rules:
+    -if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
