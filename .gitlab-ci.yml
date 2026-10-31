@@ -35,6 +35,8 @@ site-build:
 
 pages:
   stage: deploy
+  needs:
+    - job: site-build
   image: alpine
   script:
     - cp -r site/build/html public
