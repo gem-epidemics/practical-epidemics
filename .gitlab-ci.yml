@@ -51,6 +51,7 @@ colabize:
   stage: deploy
   needs: []
   image: python:3.13
+  resource_group: colab-push
   before_script:
     - git config --global user.email "gitlab-ci@dummy.co.uk"
     - git config --global user.name "GitLab CI"
