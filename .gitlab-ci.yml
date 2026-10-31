@@ -18,8 +18,8 @@ site-build:
       - .cache/pip
       - .venv
   before_script:
-    - apt update
-    - apt install -y pandoc
+    - apt-get update
+    - apt-get install -y pandoc
     - curl -LsSf https://astral.sh/uv/install.sh | sh
     - export PATH=$HOME/.local/bin:$PATH
     - uv --version
@@ -29,8 +29,6 @@ site-build:
   artifacts:
     paths:
       - site/build/html
-  rules:
-    - when: always
 
 
 pages:
@@ -43,9 +41,9 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    variables:
-      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 
 colabize:
   stage: deploy
@@ -53,8 +51,8 @@ colabize:
   image: python:3.13
   resource_group: colab-push
   before_script:
-    - git config --global user.email "gitlab-ci@dummy.co.uk"
-    - git config --global user.name "GitLab CI"
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git config --global user.name "$GITLAB_USER_NAME"
     - git config --global url."https://chrism0dwk:${IDDINF_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
     - cd colab
     - git fetch origin +refs/heads/main:refs/remotes/origin/main
@@ -68,7 +66,7 @@ colabize:
     - scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
     - cd colab
     - git add -A
-    - git diff --cached --quiet || git commit -m "Add Colab-ized notebook from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
+    - git diff --cached --quiet || git commit -m "Add Colab-ized notebooks from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"
     - git push origin main
     
   rules:
