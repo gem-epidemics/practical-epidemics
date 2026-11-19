@@ -62,8 +62,8 @@ colabize:
   script:
     - |
       for DIR in iddinf eitv; do
-        INPUTDIR=site/source/DIR
-        OUTPUTDIR=colab/DIR
+        INPUTDIR=site/source/$DIR
+        OUTPUTDIR=colab/$DIR
         mkdir -p $OUTPUTDIR
         scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
       done
