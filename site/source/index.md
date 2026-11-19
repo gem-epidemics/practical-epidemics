@@ -13,4 +13,5 @@ programme on (primarily) MCMC for fitting Bayesian infectious disease models.
 iddinf/index.md
 software/index.rst
 epidemics/index.rst
+eitv/index.md
 ```

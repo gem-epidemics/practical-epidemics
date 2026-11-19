@@ -60,10 +60,13 @@ colabize:
     - git clean -ffdx
     - cd ..
   script:
-    - INPUTDIR=site/source/iddinf
-    - OUTPUTDIR=colab/iddinf
-    - mkdir -p $OUTPUTDIR
-    - scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
+    - |
+      for DIR in iddinf eitv; do
+        INPUTDIR=site/source/DIR
+        OUTPUTDIR=colab/DIR
+        mkdir -p $OUTPUTDIR
+        scripts/colabize_iddinf.sh $INPUTDIR $OUTPUTDIR
+      done
     - cd colab
     - git add -A
     - git diff --cached --quiet || git commit -m "Add Colab-ized notebooks from $CI_PROJECT_URL ($CI_COMMIT_SHORT_SHA)"

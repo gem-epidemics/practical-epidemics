@@ -8,7 +8,7 @@ authors = [
 	{ name = "Alin Morariu", email = "a.morariu@lancaster.ac.uk"},
 	{ name = "Lloyd Chapman", email="l.chapman4@lancaster.ac.uk"},
 ]
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.12,<3.15"
 readme = "README.md"
 license = "MIT"
 maintainers = [
@@ -42,7 +42,7 @@ dependencies = [
     "particles>=0.3",
     "xarray>=2026.7.0",
     "h5netcdf>=1.8.1",
-    "gemlib>=0.15.0.post0",
+    "gemlib>=0.16.2",
     "jupyterlab>=4.6.3",
     "certifi>=2026.10.19",
 ]
