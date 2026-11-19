@@ -91,5 +91,6 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+myst_heading_anchors = 3  # Enable heading anchors down to ###
 
 proof_minimal_theme = True
