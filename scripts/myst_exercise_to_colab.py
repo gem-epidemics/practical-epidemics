@@ -101,6 +101,22 @@ sphinx-design
 
 Assumed single-cell only, same reasoning as sphinx-proof above.
 
+=========================
+MyST admonitions: note, admonition (and friends)
+=========================
+`{note}`, `{tip}`, `{hint}`, `{important}`, `{warning}`, `{caution}`,
+`{attention}`, `{danger}`, `{error}`, `{seealso}` and the generic
+`{admonition} Title`:
+- Plain            -> a blockquote with a bold, emoji-prefixed title.
+- `:class: dropdown` (sphinx-togglebutton) -> a collapsed
+  <details><summary>; add `toggle-shown` too (":class: dropdown, toggle-shown")
+  and it starts open, exactly as sphinx-togglebutton behaves.
+- `{admonition}` may borrow a style via `:class:` (e.g. ":class: warning,
+  dropdown"); the first recognised style gets the matching emoji.
+- Directives nested inside an admonition (an exercise in a note, a note in a
+  note, ...) are converted too.
+sphinx-design's `{dropdown}` honours its own `:open:` option the same way.
+
 KNOWN LIMITATIONS (see inline notes above for specifics):
 - Assumes the MyST convention that an outer directive's fence is longer
   than any fenced code sample nested directly inside it.
@@ -145,9 +161,28 @@ SD_LEAF_DIRECTIVES = {
 }
 
 
+# Standard docutils/MyST admonitions: directive name -> (emoji, default title).
+# The generic {admonition} directive takes a custom title and may borrow one of
+# these styles via its :class: option (e.g. ":class: warning").
+ADMONITION_TYPES = {
+    'note': ('\U0001F4DD', 'Note'),
+    'tip': ('\U0001F4A1', 'Tip'),
+    'hint': ('\U0001F4A1', 'Hint'),
+    'important': ('\u2757', 'Important'),
+    'warning': ('\u26A0\uFE0F', 'Warning'),
+    'caution': ('\u26A0\uFE0F', 'Caution'),
+    'attention': ('\u26A0\uFE0F', 'Attention'),
+    'danger': ('\U0001F6D1', 'Danger'),
+    'error': ('\u274C', 'Error'),
+    'seealso': ('\U0001F440', 'See also'),
+}
+ADMONITION_DIRECTIVES = set(ADMONITION_TYPES) | {'admonition'}
+
+
 def is_directive_of_interest(name):
     return (
-        name in MULTI_CELL_DIRECTIVES
+        name in ADMONITION_DIRECTIVES
+        or name in MULTI_CELL_DIRECTIVES
         or name in INLINE_SIMPLE_DIRECTIVES
         or name.startswith('prf:')
         or name in SD_CONTAINER_DIRECTIVES
@@ -258,6 +293,16 @@ def is_pure_marker_cell(text):
     return b if before == '' and after == '' else None
 
 
+def class_tokens(options):
+    """Split a :class: option (space- and/or comma-separated) into tokens."""
+    return [t for t in re.split(r'[\s,]+', options.get('class', '')) if t]
+
+
+def details_block(summary, body, is_open=False):
+    open_attr = ' open' if is_open else ''
+    return f"<details{open_attr}>\n<summary>{summary}</summary>\n\n{body}\n\n</details>\n"
+
+
 def blockquote(body):
     return '\n'.join(('> ' + l if l else '>') for l in body.split('\n'))
 
@@ -293,7 +338,9 @@ def render_start_marker(base, number):
 
 def render_end_marker(base):
     word = {'exercise': 'exercise', 'codex': 'code example', 'solution': 'solution'}.get(base, base)
-    return f"---\n_end of {word}_\n"
+    # Text first, rule last: a cell must not *start* with a horizontal rule,
+    # which JupyterLab doesn't render.
+    return f"_end of {word}_\n\n---\n"
 
 
 def render_prf_proof(block):
@@ -304,18 +351,43 @@ def render_prf_proof(block):
 def render_prf_statement(block, number, typ):
     word = typ.capitalize()
     title_arg = block['arg']
-    is_dropdown = 'dropdown' in block['options'].get('class', '')
+    tokens = class_tokens(block['options'])
     label_text = f"{word} {number}" + (f": {title_arg}" if title_arg else "")
     body = block['content'].strip('\n')
-    if is_dropdown:
-        return f"<details>\n<summary>{label_text}</summary>\n\n{body}\n\n</details>\n"
+    if 'dropdown' in tokens:
+        return details_block(label_text, body, is_open='toggle-shown' in tokens)
     return f"#### {label_text}\n\n{blockquote(body)}\n"
 
 
-def render_sd_dropdown(block):
+def render_sd_dropdown(block, convert_inline_directives):
     title = block['arg'] or 'Details'
-    body = block['content'].strip('\n')
-    return f"<details>\n<summary>{title}</summary>\n\n{body}\n\n</details>\n"
+    body = convert_inline_directives(block['content']).strip('\n')
+    return details_block(title, body, is_open='open' in block['options'])
+
+
+def render_admonition(block, directive, convert_inline_directives):
+    """
+    {note}, {tip}, {warning}, ... and the generic {admonition} Title.
+
+    - Plain  -> a blockquote with a bold (emoji-prefixed) title.
+    - With `:class: dropdown` (sphinx-togglebutton) -> a collapsed <details>;
+      adding `toggle-shown` as well starts it open, as in sphinx-togglebutton.
+    Nested directives inside the admonition are converted too.
+    """
+    tokens = class_tokens(block['options'])
+    if directive == 'admonition':
+        style = next((t for t in tokens if t in ADMONITION_TYPES), None)
+        title = block['arg'] or 'Admonition'
+    else:
+        style = directive
+        title = ADMONITION_TYPES[directive][1]
+    emoji = ADMONITION_TYPES[style][0] if style else ''
+    heading = f"{emoji} {title}".strip()
+    body = convert_inline_directives(block['content']).strip('\n')
+    if 'dropdown' in tokens:
+        return details_block(heading, body, is_open='toggle-shown' in tokens)
+    text = f"**{heading}**" + (f"\n\n{body}" if body else "")
+    return f"{blockquote(text)}\n"
 
 
 def split_card_sections(content):
@@ -402,6 +474,9 @@ def convert_notebook(nb):
             )
             return f"_{directive}_\n"
 
+        if directive in ADMONITION_DIRECTIVES:
+            return render_admonition(block, directive, convert_inline_directives)
+
         if directive == 'exercise':
             exercise_counter += 1
             label = block['options'].get('label', '')
@@ -426,7 +501,7 @@ def convert_notebook(nb):
             return render_prf_statement(block, prf_counters[typ], typ)
 
         if directive == 'dropdown':
-            return render_sd_dropdown(block)
+            return render_sd_dropdown(block, convert_inline_directives)
 
         if directive in ('card', 'grid-item-card'):
             return render_sd_card(block, convert_inline_directives)
@@ -457,6 +532,11 @@ def convert_notebook(nb):
         cursor = 0
         for b in blocks:
             out.append(''.join(lines[cursor:b['start_line']]))
+            # Keep a blank line before the converted block so it never
+            # glues onto a preceding paragraph.
+            so_far = ''.join(out)
+            if so_far.strip() and not so_far.endswith('\n\n'):
+                out.append('\n' if so_far.endswith('\n') else '\n\n')
             rendered = render_and_dispatch(b)
             if not rendered.endswith('\n\n'):
                 rendered = rendered.rstrip('\n') + '\n\n'
