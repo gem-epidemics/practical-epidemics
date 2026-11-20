@@ -91,6 +91,7 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+myst_links_external_new_tab = True
 myst_heading_anchors = 3  # Enable heading anchors down to ###
 
 proof_minimal_theme = True
