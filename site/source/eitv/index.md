@@ -20,7 +20,8 @@ Thursday's sessions will cover stochastic epidemics, the principles of likelihoo
 ```{toctree}
 :maxdepth: 1
 :numbered:
-	     
+
+python_positron_setup.rst
 gemlib_workshop.ipynb
 likelihood_theory.ipynb
 bayes_mcmc_workshop.ipynb
