@@ -1,0 +1,5 @@
+.mermaid-container > pre > svg {
+    height: auto !important;
+    width: 100%
+    max-width: 100% !important;
+}

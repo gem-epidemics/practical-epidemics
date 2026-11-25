@@ -55,6 +55,12 @@ nb_execution_timeout = 300
 nb_execution_mode = "off"
 nb_execution_excludepatterns = ["iddinf/mcmc_case_study.ipynb"]
 
+mermaid_init_config = {
+    "startOnLoad": False,
+    "flowchart": {"useMaxWidth": False},
+    "themeVariables": {"fontSize": "12px"},
+}
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -69,10 +75,12 @@ html_theme_options = {
 html_logo = "images/gem-logo.png"
 html_favicon = "images/favicon.ico"
 
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+html_css_files = ["custom.css"]
 
 myst_fence_as_directive = ["mermaid"]
 myst_enable_extensions = [
