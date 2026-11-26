@@ -23,7 +23,6 @@ keywords = [
 ]
 dependencies = [
     "sphinx>=8.2.3,<10",
-    "sphinx-book-theme>=1.1.4,<2",
     "sphinx-design>=0.6.1,<0.8",
     "myst-nb>=1.3.0,<2",
     "scipy>=1.14.1,<2",
@@ -45,6 +44,8 @@ dependencies = [
     "gemlib>=0.16.2",
     "jupyterlab>=4.6.3",
     "certifi>=2026.10.19",
+    "sphinx-book-theme>=1.4.0",
+    "sphinx-copybutton>=0.5.2",
 ]
 
 [dependency-groups]

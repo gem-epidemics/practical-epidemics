@@ -6,10 +6,10 @@ resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'emscripten'",
     "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
     "python_full_version == '3.13.*' and sys_platform == 'win32'",
-    "python_full_version < '3.13' and sys_platform == 'win32'",
     "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
-    "python_full_version < '3.13' and sys_platform == 'emscripten'",
     "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.13' and sys_platform == 'win32'",
+    "python_full_version < '3.13' and sys_platform == 'emscripten'",
     "python_full_version < '3.13' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 
@@ -2047,6 +2047,7 @@ dependencies = [
     { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
     { name = "sphinx-book-theme" },
     { name = "sphinx-code-examples" },
+    { name = "sphinx-copybutton" },
     { name = "sphinx-design" },
     { name = "sphinx-exercise" },
     { name = "sphinx-proof" },
@@ -2083,8 +2084,9 @@ requires-dist = [
     { name = "scipy", specifier = ">=1.14.1,<2" },
     { name = "seaborn", specifier = ">=0.13.2,<0.14" },
     { name = "sphinx", specifier = ">=8.2.3,<10" },
-    { name = "sphinx-book-theme", specifier = ">=1.1.4,<2" },
+    { name = "sphinx-book-theme", specifier = ">=1.4.0" },
     { name = "sphinx-code-examples", specifier = ">=1.2.1" },
+    { name = "sphinx-copybutton", specifier = ">=0.5.2" },
     { name = "sphinx-design", specifier = ">=0.6.1,<0.8" },
     { name = "sphinx-exercise", specifier = ">=1.2.0,<2" },
     { name = "sphinx-proof", specifier = ">=0.3.0,<0.5" },
@@ -2866,6 +2868,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cb/64/fe4dbc167754e2e8eface54101d732a55498f27cc85bfe824c24493979e5/sphinx_code_examples-1.2.3.tar.gz", hash = "sha256:4845be7934326cd2ace945c740acce3420c8aebaebb6eb1655c73cfecc159eb7", size = 30953, upload-time = "2026-01-04T11:17:08.715Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b0/9e/e9d545c5c699cd6fa35912b487cde2910e4c5fcf7e4f52fced2f31dd8cdc/sphinx_code_examples-1.2.3-py3-none-any.whl", hash = "sha256:f2f25cd5fecc0e666fcbbd41016a6545bee0a7ae4d19c8c68ad70fac1171c596", size = 72157, upload-time = "2026-01-04T11:17:07.23Z" },
+]
+
+[[package]]
+name = "sphinx-copybutton"
+version = "0.5.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fc/2b/a964715e7f5295f77509e59309959f4125122d648f86b4fe7d70ca1d882c/sphinx-copybutton-0.5.2.tar.gz", hash = "sha256:4cf17c82fb9646d1bc9ca92ac280813a3b605d8c421225fd9913154103ee1fbd", size = 23039, upload-time = "2023-04-14T08:10:22.998Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9e/48/1ea60e74949eecb12cdd6ac43987f9fd331156388dcc2319b45e2ebb81bf/sphinx_copybutton-0.5.2-py3-none-any.whl", hash = "sha256:fb543fd386d917746c9a2c50360c7905b605726b9355cd26e9974857afeae06e", size = 13343, upload-time = "2023-04-14T08:10:20.844Z" },
 ]
 
 [[package]]

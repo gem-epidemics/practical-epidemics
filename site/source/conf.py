@@ -38,6 +38,7 @@ extensions = [
     "sphinxcontrib.mermaid",
     "sphinx_proof",
     "sphinx_code_examples",
+    "sphinx_copybutton",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
